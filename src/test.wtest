@@ -2,9 +2,10 @@ import comidas.*
 import comensales.*
 import cocina.*
 
-describe "Test del Parcial" {
+
 	
-	test "4.1 Test de Comidas" {
+	test "Parcial Objetos 1" {
+// 		****** 4.1 Comidas *******
 		const hamburguesa1 = new HamburguesaDeCarne(pan=panCasero)
 		assert.equals(80,hamburguesa1.valoracion())
 		const hamburguesaV1 = new HamburguesaVegetariana(pan=panDeMasaMadre,legumbre="garbanzos")
@@ -16,5 +17,18 @@ describe "Test del Parcial" {
 		const chori1 = new Corte(calidad=8, peso=50, nombre=chorizo)		
 		const parri1 = new Parrillada(cortes=#{asado1,entrania1,chori1})
 		assert.equals(147,parri1.valoracion())
+		
+// 		****** 4.2 Comensales *******
+		const veggie1 = new Vegetariano(peso=68500)
+		veggie1.comer(provo1)
+		veggie1.comer(hamburguesaV1)
+		veggie1.comer(hamburguesaV1)
+		assert.that(veggie1.satisfecho())
+		const popu1 = new HambrePopular(peso=85000)
+		popu1.comer(parri1)
+		assert.notThat(popu1.satisfecho())
+		const finoli1 = new DePaladarFino(peso=68500)
+		const hamburguesa2 = new HamburguesaDeCarne(pan=panDeMasaMadre)
+		assert.that(finoli1.leAgrada(hamburguesa2))
+		assert.notThat(finoli1.leAgrada(hamburguesa1))		
 	}
-}

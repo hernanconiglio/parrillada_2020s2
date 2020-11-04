@@ -5,7 +5,8 @@ object cocina {
 	var property comidas = []
 	
 	method tieneBuenaOfertaVegetariana() {
-		return ( self.comidasNoVegetarianas().size() - self.comidasVegetarianas().size() ) <= 2   
+		return if (self.comidasVegetarianas().size() < 2) { false } 
+		else { ( self.comidasNoVegetarianas().size() - self.comidasVegetarianas().size() ) <= 2 }
 	}
 	
 	method platoFuerteCarnivoro() { return self.comidasNoVegetarianas().max( { c=>c.valoracion()} ) }

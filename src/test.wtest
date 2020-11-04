@@ -1,3 +1,20 @@
 import comidas.*
 import comensales.*
 import cocina.*
+
+describe "Test del Parcial" {
+	
+	test "4.1 Test de Comidas" {
+		const hamburguesa1 = new HamburguesaDeCarne(pan=panCasero)
+		assert.equals(80,hamburguesa1.valoracion())
+		const hamburguesaV1 = new HamburguesaVegetariana(pan=panDeMasaMadre,legumbre="garbanzos")
+		assert.equals(122,hamburguesaV1.valoracion())
+		const provo1 = new Provoleta(peso=190,tieneEspecias=true)
+		assert.that(provo1.esEspecial())
+		const asado1 = new Corte(calidad=10, peso=250, nombre=asado)
+		const entrania1 = new Corte(calidad=7, peso=200, nombre=entrania)
+		const chori1 = new Corte(calidad=8, peso=50, nombre=chorizo)		
+		const parri1 = new Parrillada(cortes=#{asado1,entrania1,chori1})
+		assert.equals(147,parri1.valoracion())
+	}
+}
